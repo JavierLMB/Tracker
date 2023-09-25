@@ -1,14 +1,28 @@
 :root {
-  --color-lightest: #fff4e6;
-  --color-light: #ffe8cc;
-  --color-medium: #ffa94d;
-  --color-dark: #ff922b;
+  --primary-dark: hsl(224, 46%, 9%);
+  --primary-medium: hsl(236, 44%, 20%);
+  --primary-light: hsl(246, 80%, 60%);
+
+  --work-primary: hsl(15, 100%, 70%);
+  --play-primary: hsl(195, 74%, 62%);
+  --study-primary: hsl(348, 100%, 68%);
+  --exercise-primary: hsl(145, 58%, 55%);
+  --social-primary: hsl(263, 63%, 51%);
+  --selfCare-primary: hsl(43, 84%, 65%);
+
+  --global-gap: 3rem;
+  --global-radius: 2rem;
+  --inner-radius: 5rem;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+li {
+  list-style: none;
 }
 
 html {
@@ -19,13 +33,179 @@ html {
 
 body {
   height: 100vh;
-  color: #495057;
+  color: #eeecff;
+  background-color: var(--primary-dark);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: hsl(246, 30%, 45%);
+  font-size: 2rem;
+}
+
+.button.active {
+  color: hsl(246, 30%, 85%);
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.tracker {
+  display: grid;
+  grid-template-columns: 0.3fr;
+
+  justify-content: center;
+  gap: var(--global-gap);
+  height: 55%;
+  width: 70%;
+}
+
+.newUserLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.genderChoice {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.genderChoice label input[type="radio"]:checked + img {
+  transform: translateY(-1rem);
+  transition: 0.5s ease-out;
+}
+
+input,
+select {
+  font-family: inherit;
+  color: black;
+  font-size: 1.5rem;
+  padding: 0.7rem;
+  text-align: center;
+  border: 1px solid var(--color-light);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid var(--color-dark);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tracker.active {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  justify-content: center;
+  gap: var(--global-gap);
+  height: 55%;
+  width: 70%;
 }
 
 .profileIcon {
-  width: 5rem;
-  height: 5rem;
+  width: 13rem;
+  height: 13rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--global-radius);
+  background-color: var(--primary-medium);
+}
+
+.userSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
+    var(--inner-radius);
+  background-color: var(--primary-light);
+  height: 100%;
+  padding: 3rem;
+}
+
+.userSection p {
+  font-weight: 100;
+  padding-bottom: 1.5rem;
+}
+
+.userSection h2 {
+  text-align: center;
+}
+
+.userSection h3 {
+  font-weight: 700;
+  font-size: 5rem;
+  line-height: 5rem;
+}
+
+.datePreview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--primary-medium);
+  border-radius: 0rem 0rem var(--global-radius) var(--global-radius);
+  padding: 3rem;
+}
+
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: var(--global-gap);
+}
+
+.card {
+  padding: 4rem;
+  background-color: var(--primary-medium);
+  height: 100%;
+  border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
+    var(--global-radius);
+}
+
+.card h3 {
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+
+.card p {
+  font-size: 7rem;
+}
+
+.card .topActivity {
+  font-size: 2rem;
+  font-weight: 400;
+  color: hsl(246, 30%, 80%);
+}
+
+.cardContainer {
+  padding-top: 5rem;
+  border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
+    var(--inner-radius);
 }
