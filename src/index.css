@@ -24,3 +24,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.profileIcon {
+  width: 5rem;
+  height: 5rem;
+}
