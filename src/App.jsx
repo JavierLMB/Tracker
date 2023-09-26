@@ -261,15 +261,21 @@ function NewActivityForm({
   const [activityName, setActivityName] = useState("");
   const [activityHours, setActivityHours] = useState("");
 
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (activityHours <= 0) return;
 
     const id = crypto.randomUUID();
 
     const newActivities = {
       id,
-      name: activityName,
-      type: activityType,
+      name: capitalizeFirstLetter(activityName),
+      type: capitalizeFirstLetter(activityType),
       hours: activityHours,
     };
     onActivities([...activities, newActivities]);
@@ -290,10 +296,11 @@ function NewActivityForm({
           <div className="newActivityLabel">
             <label>Activity Type</label>
             <select
+              required
               value={activityType}
               onChange={(e) => onActivityType(e.target.value)}
             >
-              <option disabled></option>
+              <option></option>
               {initialData.map((data) => (
                 <option key={data.type} value={data.type}>
                   {data.type}
@@ -305,6 +312,8 @@ function NewActivityForm({
           <div className="newActivityLabel">
             <label>Activity Name</label>
             <input
+              maxLength="20"
+              required
               type="text"
               value={activityName}
               onChange={(e) => setActivityName(e.target.value)}
@@ -314,6 +323,9 @@ function NewActivityForm({
           <div className="newActivityLabel">
             <label>Hours Spent</label>
             <input
+              min="1"
+              max="99"
+              required
               type="number"
               value={activityHours}
               onChange={(e) => setActivityHours(Number(e.target.value))}
@@ -391,7 +403,7 @@ function Card({ data, totalHoursByType, topActivityName }) {
         <p className="topActivity">
           Top Activity -{" "}
           {topActivityName[data.type]
-            ? topActivityName[data.type].name.length >= 6
+            ? topActivityName[data.type].name.length > 6
               ? `${topActivityName[data.type].name.slice(0, 6)}...`
               : topActivityName[data.type].name
             : "None"}
