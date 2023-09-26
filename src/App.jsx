@@ -52,6 +52,12 @@ export default function App() {
 function Tracker() {
   const [section, setSection] = useState(null);
   const [user, setUser] = useState(null);
+  const [activities, setActivities] = useState([]);
+
+  const totalHoursByType = activities.reduce((acc, { type, hours }) => {
+    acc[type] = (acc[type] || 0) + hours;
+    return acc;
+  }, {});
 
   function handleSectionChange(e) {
     setSection(e.target.textContent);
@@ -65,8 +71,12 @@ function Tracker() {
         user={user}
         onUser={setUser}
       />
-      {section === "Summary" && <CardList />}
-      {section === "New Activity" && <NewActivity />}
+      {section === "Summary" && (
+        <CardList totalHoursByType={totalHoursByType} />
+      )}
+      {section === "New Activity" && (
+        <NewActivity activities={activities} onActivities={setActivities} />
+      )}
     </div>
   );
 }
@@ -126,7 +136,7 @@ function UserSetup({ onUser }) {
         </label>
       </div>
 
-      <div class="newUserLabel">
+      <div className="newUserLabel">
         <label>First Name</label>
         <input
           type="text"
@@ -135,7 +145,7 @@ function UserSetup({ onUser }) {
         />
       </div>
 
-      <div class="newUserLabel">
+      <div className="newUserLabel">
         <label>Last Name</label>
         <input
           type="text"
@@ -194,51 +204,167 @@ function DatePreview({ onSectionChange, section }) {
   );
 }
 
-function NewActivity() {
+function NewActivity({ activities, onActivities }) {
+  const [activityType, setActivityType] = useState("");
+
+  const backgroundColor = activityType
+    ? initialData.find((data) => data.type === activityType)?.color
+    : "hsl(246, 80%, 60%)";
+
+  function handleActivityDelete(cur) {
+    onActivities(activities.filter((activity) => activity.id !== cur.id));
+  }
+
   return (
     <div className="newActivity">
-      <div className="newActivityContainer">
-        <div className="activityList"></div>
-      </div>
-      <NewActivityForm />
+      <NewActivityForm
+        activities={activities}
+        onActivities={onActivities}
+        activityType={activityType}
+        onActivityType={setActivityType}
+        backgroundColor={backgroundColor}
+      />
+      <ActivityList
+        backgroundColor={backgroundColor}
+        activities={activities}
+        onActivityDelete={handleActivityDelete}
+      />
     </div>
   );
 }
 
-function NewActivityForm() {
-  return (
-    <form className="newActivityContainer">
-      <div className="newActivityData">
-        <div class="newActivityLabel">
-          <label>Activity Name</label>
-          <input />
-        </div>
+function NewActivityForm({
+  activities,
+  onActivities,
+  activityType,
+  onActivityType,
+  backgroundColor,
+}) {
+  const [activityName, setActivityName] = useState("");
+  const [activityHours, setActivityHours] = useState("");
 
-        <div class="newActivityLabel">
-          <label>Hours Spent</label>
-          <input />
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const id = crypto.randomUUID();
+
+    const newActivities = {
+      id,
+      name: activityName,
+      type: activityType,
+      hours: activityHours,
+    };
+    onActivities([...activities, newActivities]);
+  };
+
+  return (
+    <form
+      className="newActivityContainer"
+      style={{
+        backgroundColor: backgroundColor,
+      }}
+      onSubmit={handleSubmit}
+    >
+      <div className="newActivityInner">
+        <h3>Activity Form</h3>
+
+        <div className="newActivityData">
+          <div className="newActivityLabel">
+            <label>Activity Type</label>
+            <select
+              value={activityType}
+              onChange={(e) => onActivityType(e.target.value)}
+            >
+              <option disabled></option>
+              {initialData.map((data) => (
+                <option key={data.type} value={data.type}>
+                  {data.type}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="newActivityLabel">
+            <label>Activity Name</label>
+            <input
+              type="text"
+              value={activityName}
+              onChange={(e) => setActivityName(e.target.value)}
+            />
+          </div>
+
+          <div className="newActivityLabel">
+            <label>Hours Spent</label>
+            <input
+              type="number"
+              value={activityHours}
+              onChange={(e) => setActivityHours(Number(e.target.value))}
+            />
+          </div>
         </div>
+        <Button>Submit</Button>
       </div>
     </form>
   );
 }
 
-function CardList() {
+function ActivityList({ activities, backgroundColor, onActivityDelete }) {
+  return (
+    <div
+      className="newActivityContainer"
+      style={{
+        backgroundColor: backgroundColor,
+      }}
+    >
+      <div className="newActivityInner">
+        <h3>Activity List</h3>
+
+        <ul className="activityList">
+          {activities.map((activity, i) => (
+            <div key={i}>
+              <li key={activities.id}>
+                <span className="activityNumber">
+                  <span
+                    style={{
+                      color: initialData.find(
+                        (data) => data.type === activity.type
+                      )?.color,
+                    }}
+                  >
+                    &#9679;{" "}
+                  </span>
+                  {i < 9 ? `0${i + 1}` : `${i + 1}`}.
+                </span>
+                <span> A:</span> {activity.name}, <span>T:</span>{" "}
+                {activity.type}, <span>H:</span> {activity.hours}Hrs
+              </li>
+              <Button onClick={() => onActivityDelete(activity)}>X</Button>
+            </div>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function CardList({ totalHoursByType }) {
   return (
     <ul className="cardList">
       {initialData.map((data) => (
-        <Card data={data} key={data.type} />
+        <Card totalHoursByType={totalHoursByType} data={data} key={data.type} />
       ))}
     </ul>
   );
 }
 
-function Card({ data }) {
+function Card({ data, totalHoursByType }) {
   return (
     <div className="cardContainer" style={{ backgroundColor: data.color }}>
       <li className="card">
         <h3>{data.type}</h3>
-        <p>{data.hours}hrs</p>
+        <p>
+          {totalHoursByType[data.type] ? totalHoursByType[data.type] : 0}hrs
+        </p>
         <p className="topActivity">Top Activity - {data.lastWeek}</p>
       </li>
     </div>
