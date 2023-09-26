@@ -107,11 +107,16 @@ function UserSetup({ onUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    function capitalizeFirstLetter(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     const newUser = {
-      firstName: firstName,
-      lastName: lastName,
-      gender: gender,
+      firstName: capitalizeFirstLetter(firstName),
+      lastName: capitalizeFirstLetter(lastName),
+      gender,
     };
+
     onUser(newUser);
   };
 
@@ -127,6 +132,7 @@ function UserSetup({ onUser }) {
             value="male"
             checked={gender === "male"}
             onChange={(e) => setGender(e.target.value)}
+            required
           />
           <img className="profileIcon" src={maleAvatar} alt="Avatar" />
         </label>
@@ -138,6 +144,7 @@ function UserSetup({ onUser }) {
             value="female"
             checked={gender === "female"}
             onChange={(e) => setGender(e.target.value)}
+            required
           />
           <img className="profileIcon" src={femaleAvatar} alt="Avatar" />
         </label>
@@ -146,6 +153,8 @@ function UserSetup({ onUser }) {
       <div className="newUserLabel">
         <label>First Name</label>
         <input
+          maxLength="15"
+          required
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
@@ -155,6 +164,8 @@ function UserSetup({ onUser }) {
       <div className="newUserLabel">
         <label>Last Name</label>
         <input
+          maxLength="15"
+          required
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
