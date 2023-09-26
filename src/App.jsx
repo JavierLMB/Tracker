@@ -7,37 +7,31 @@ const initialData = [
     type: "Work",
     color: "hsl(15, 100%, 70%)",
     hours: 32,
-    lastWeek: 36,
   },
   {
     type: "Play",
     color: "hsl(195, 74%, 62%)",
     hours: 10,
-    lastWeek: 8,
   },
   {
     type: "Study",
     color: "hsl(348, 100%, 68%)",
     hours: 4,
-    lastWeek: 7,
   },
   {
     type: "Exercise",
     color: " hsl(145, 58%, 55%)",
     hours: 4,
-    lastWeek: 5,
   },
   {
     type: "Social",
     color: "hsl(263, 63%, 51%)",
     hours: 5,
-    lastWeek: 10,
   },
   {
     type: "Self Care",
     color: "hsl(43, 84%, 65%)",
     hours: 2,
-    lastWeek: 2,
   },
 ];
 
@@ -59,6 +53,16 @@ function Tracker() {
     return acc;
   }, {});
 
+  const topActivityName = activities.reduce(
+    (maxHours, { type, name, hours }) => {
+      if (!maxHours[type] || hours > maxHours[type].hours) {
+        maxHours[type] = { name, hours };
+      }
+      return maxHours;
+    },
+    {}
+  );
+
   function handleSectionChange(e) {
     setSection(e.target.textContent);
   }
@@ -72,7 +76,10 @@ function Tracker() {
         onUser={setUser}
       />
       {section === "Summary" && (
-        <CardList totalHoursByType={totalHoursByType} />
+        <CardList
+          totalHoursByType={totalHoursByType}
+          topActivityName={topActivityName}
+        />
       )}
       {section === "New Activity" && (
         <NewActivity activities={activities} onActivities={setActivities} />
@@ -347,17 +354,22 @@ function ActivityList({ activities, backgroundColor, onActivityDelete }) {
   );
 }
 
-function CardList({ totalHoursByType }) {
+function CardList({ totalHoursByType, topActivityName }) {
   return (
     <ul className="cardList">
       {initialData.map((data) => (
-        <Card totalHoursByType={totalHoursByType} data={data} key={data.type} />
+        <Card
+          topActivityName={topActivityName}
+          totalHoursByType={totalHoursByType}
+          data={data}
+          key={data.type}
+        />
       ))}
     </ul>
   );
 }
 
-function Card({ data, totalHoursByType }) {
+function Card({ data, totalHoursByType, topActivityName }) {
   return (
     <div className="cardContainer" style={{ backgroundColor: data.color }}>
       <li className="card">
@@ -365,7 +377,14 @@ function Card({ data, totalHoursByType }) {
         <p>
           {totalHoursByType[data.type] ? totalHoursByType[data.type] : 0}hrs
         </p>
-        <p className="topActivity">Top Activity - {data.lastWeek}</p>
+        <p className="topActivity">
+          Top Activity -{" "}
+          {topActivityName[data.type]
+            ? topActivityName[data.type].name.length >= 6
+              ? `${topActivityName[data.type].name.slice(0, 6)}...`
+              : topActivityName[data.type].name
+            : "None"}
+        </p>
       </li>
     </div>
   );
