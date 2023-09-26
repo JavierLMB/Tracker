@@ -50,7 +50,7 @@ export default function App() {
 }
 
 function Tracker() {
-  const [section, setSection] = useState("new");
+  const [section, setSection] = useState(null);
   const [user, setUser] = useState(null);
 
   function handleSectionChange(e) {
@@ -58,7 +58,7 @@ function Tracker() {
   }
 
   return (
-    <div className={`tracker ${section === "Summary" ? "active" : ""}`}>
+    <div className={`tracker ${section ? "active" : ""}`}>
       <Profile
         section={section}
         onSectionChange={handleSectionChange}
@@ -66,6 +66,7 @@ function Tracker() {
         onUser={setUser}
       />
       {section === "Summary" && <CardList />}
+      {section === "New Activity" && <NewActivity />}
     </div>
   );
 }
@@ -124,6 +125,7 @@ function UserSetup({ onUser }) {
           <img className="profileIcon" src={femaleAvatar} alt="Avatar" />
         </label>
       </div>
+
       <div class="newUserLabel">
         <label>First Name</label>
         <input
@@ -189,6 +191,35 @@ function DatePreview({ onSectionChange, section }) {
         </Button>
       </li>
     </ul>
+  );
+}
+
+function NewActivity() {
+  return (
+    <div className="newActivity">
+      <div className="newActivityContainer">
+        <div className="activityList"></div>
+      </div>
+      <NewActivityForm />
+    </div>
+  );
+}
+
+function NewActivityForm() {
+  return (
+    <form className="newActivityContainer">
+      <div className="newActivityData">
+        <div class="newActivityLabel">
+          <label>Activity Name</label>
+          <input />
+        </div>
+
+        <div class="newActivityLabel">
+          <label>Hours Spent</label>
+          <input />
+        </div>
+      </div>
+    </form>
   );
 }
 
