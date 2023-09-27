@@ -27,11 +27,6 @@ export default function DoughnutInfo({ totalHoursByType }) {
       {
         label: "My First Dataset",
         data: initialDoughnut(),
-        options: {
-          layout: {
-            padding: 200,
-          },
-        },
         backgroundColor: [
           "hsl(15, 100%, 70%)",
           "hsl(195, 74%, 62%)",
@@ -49,7 +44,25 @@ export default function DoughnutInfo({ totalHoursByType }) {
 
   return (
     <div>
-      <Doughnut data={DoughnutData} />
+      <Doughnut
+        data={DoughnutData}
+        options={{
+          layout: {
+            padding: 0,
+          },
+          plugins: {
+            legend: {
+              position: "left",
+              align: "center",
+              labels: {
+                font: {
+                  size: 24,
+                },
+              },
+            },
+          },
+        }}
+      />
     </div>
   );
 }
