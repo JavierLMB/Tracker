@@ -16,7 +16,7 @@ const initialData = [
   },
   {
     type: "Exercise",
-    color: " hsl(145, 58%, 55%)",
+    color: "hsl(145, 58%, 55%)",
     hours: 4,
   },
   {

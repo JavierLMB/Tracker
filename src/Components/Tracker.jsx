@@ -39,7 +39,9 @@ export default function Tracker() {
       {section === "New Activity" && (
         <NewActivity activities={activities} onActivities={setActivities} />
       )}
-      {section === "Breakdown" && <Breakdown />}
+      {section === "Breakdown" && (
+        <Breakdown totalHoursByType={totalHoursByType} />
+      )}
       {section === "Summary" && (
         <CardList
           totalHoursByType={totalHoursByType}
