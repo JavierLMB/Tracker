@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardList from "./CardList";
 import NewActivity from "./NewActivity";
 import Profile from "./Profile";
+import Breakdown from "./Breakdown";
 
 export default function Tracker() {
   const [section, setSection] = useState(null);
@@ -35,14 +36,15 @@ export default function Tracker() {
         user={user}
         onUser={setUser}
       />
+      {section === "New Activity" && (
+        <NewActivity activities={activities} onActivities={setActivities} />
+      )}
+      {section === "Breakdown" && <Breakdown />}
       {section === "Summary" && (
         <CardList
           totalHoursByType={totalHoursByType}
           topActivityName={topActivityName}
         />
-      )}
-      {section === "New Activity" && (
-        <NewActivity activities={activities} onActivities={setActivities} />
       )}
     </div>
   );

@@ -257,6 +257,15 @@ input[type="radio"] {
   font-size: 2rem;
 }
 
+.breakdown {
+  /* background-color: red; */
+  width: 50%;
+}
+
+#acquisitions {
+  width: 10rem;
+}
+
 .cardList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
