@@ -71,6 +71,7 @@ body {
   display: grid;
   grid-template-columns: 0.3fr;
   justify-content: center;
+  align-content: center;
   gap: var(--global-gap);
   height: 55%;
   width: 70%;
@@ -259,11 +260,25 @@ input[type="radio"] {
 
 .breakdown {
   /* background-color: red; */
-  width: 50%;
+  /* width: 50%; */
 }
 
-#acquisitions {
-  width: 10rem;
+.doughnut {
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+  max-height: 54.8rem;
+  background-color: var(--primary-medium);
+  border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
+    var(--global-radius);
+}
+
+.doughnutContainer {
+  width: 100%;
+  padding-top: 5rem;
+  background-color: var(--primary-light);
+  border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
+    var(--inner-radius);
 }
 
 .cardList {
@@ -298,6 +313,7 @@ input[type="radio"] {
 }
 
 .cardContainer {
+  max-height: 28.4rem;
   padding-top: 5rem;
   border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
     var(--inner-radius);

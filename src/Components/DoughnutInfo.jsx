@@ -35,7 +35,7 @@ export default function DoughnutInfo({ totalHoursByType }) {
           "hsl(263, 63%, 51%)",
           "hsl(43, 84%, 65%)",
         ],
-        borderColor: ["hsl(224, 46%, 9%)"],
+        borderColor: ["hsl(236, 44%, 20%)"],
         hoverOffset: 50,
         borderWidth: 20,
       },
@@ -43,26 +43,28 @@ export default function DoughnutInfo({ totalHoursByType }) {
   };
 
   return (
-    <div>
-      <Doughnut
-        data={DoughnutData}
-        options={{
-          layout: {
-            padding: 0,
-          },
-          plugins: {
-            legend: {
-              position: "left",
-              align: "center",
-              labels: {
-                font: {
-                  size: 24,
+    <div className="doughnutContainer">
+      <div className="doughnut">
+        <Doughnut
+          data={DoughnutData}
+          options={{
+            layout: {
+              padding: 0,
+            },
+            plugins: {
+              legend: {
+                position: "left",
+                align: "center",
+                labels: {
+                  font: {
+                    size: 24,
+                  },
                 },
               },
             },
-          },
-        }}
-      />
+          }}
+        />
+      </div>
     </div>
   );
 }
