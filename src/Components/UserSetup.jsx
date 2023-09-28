@@ -21,7 +21,16 @@ export default function UserSetup({ onUser }) {
       gender,
     };
 
-    onUser(newUser);
+    const preset =
+      firstName === "preset" && lastName === "preset" && gender === "male"
+        ? {
+            firstName: "Jeremy",
+            lastName: "Cooper",
+            gender,
+          }
+        : false;
+
+    onUser(preset || newUser);
   };
 
   return (
@@ -76,7 +85,7 @@ export default function UserSetup({ onUser }) {
         />
       </div>
 
-      <Button>Continue</Button>
+      <Button bright={true}>Continue</Button>
     </form>
   );
 }

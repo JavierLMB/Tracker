@@ -1,4 +1,0 @@
-1. Favourite Type (based on total hours)
-2. Favourite global Activity (based on highest hours overall)
-3. Some sort of graph to visualize types in order based on hours. Look into ChartJS - check out options prop as well
-   https://www.chartjs.org/docs/latest/
