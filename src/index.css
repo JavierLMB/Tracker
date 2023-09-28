@@ -1,5 +1,5 @@
 :root {
-  --primary-dark: hsl(224, 46%, 9%);
+  --primary-dark: rgb(12, 18, 34);
   --primary-medium: hsl(236, 44%, 20%);
   --primary-light: hsl(246, 80%, 60%);
 
@@ -162,6 +162,20 @@ input[type="radio"] {
   width: 70%;
 }
 
+.logoIconContainer {
+  position: absolute;
+  top: -19rem;
+  right: 25rem;
+  z-index: -99;
+  width: 30rem;
+  height: 30rem;
+}
+
+.logoIconContainer:hover {
+  width: 35rem;
+  height: 35rem;
+}
+
 .profileIcon {
   width: 13rem;
   height: 13rem;
@@ -173,6 +187,7 @@ input[type="radio"] {
   justify-content: space-between;
   border-radius: var(--global-radius);
   background-color: var(--primary-medium);
+  position: relative;
 }
 
 .userSection {
@@ -332,6 +347,7 @@ input[type="radio"] {
   background-color: var(--primary-light);
   border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
     var(--inner-radius);
+  max-width: 97.8rem;
 }
 
 .cardList {

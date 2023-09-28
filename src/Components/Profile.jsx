@@ -1,6 +1,7 @@
 import DatePreview from "./DatePreview";
 import UserInfo from "./UserInfo";
 import UserSetup from "./UserSetup";
+import TrackerLogoSVG from "../images/TrackerLogoSVG.svg";
 
 export default function Profile({
   onSectionChange,
@@ -10,15 +11,20 @@ export default function Profile({
   onActivities,
 }) {
   return (
-    <div className="profile">
-      {user ? (
-        <UserInfo user={user} />
-      ) : (
-        <UserSetup onUser={onUser} onActivities={onActivities} />
-      )}
-      {user && (
-        <DatePreview section={section} onSectionChange={onSectionChange} />
-      )}
-    </div>
+    <>
+      <div className="profile">
+        <div className="logoIconContainer">
+          <img className="logoIcon" src={TrackerLogoSVG} />
+        </div>
+        {user ? (
+          <UserInfo user={user} />
+        ) : (
+          <UserSetup onUser={onUser} onActivities={onActivities} />
+        )}
+        {user && (
+          <DatePreview section={section} onSectionChange={onSectionChange} />
+        )}
+      </div>
+    </>
   );
 }
