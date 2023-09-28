@@ -301,14 +301,14 @@ input[type="radio"] {
 }
 
 .breakdown {
-  height: 54.8rem;
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   padding: 4rem;
   background-color: var(--primary-medium);
   border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
     var(--global-radius);
+  max-height: 54.8rem;
+  max-width: 97.8rem;
 }
 
 .breakdown div {

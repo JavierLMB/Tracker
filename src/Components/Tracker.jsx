@@ -3,7 +3,6 @@ import CardList from "./CardList";
 import NewActivity from "./NewActivity";
 import Profile from "./Profile";
 import Breakdown from "./Breakdown";
-import presetObj from "./presetObj";
 
 export default function Tracker() {
   const [section, setSection] = useState(null);
