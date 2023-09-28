@@ -1,18 +1,6 @@
 import initialData from "./initialData";
 import { Doughnut } from "react-chartjs-2";
 
-const plugin = {
-  id: "customCanvasBackgroundColor",
-  beforeDraw: (chart, args, options) => {
-    const { ctx } = chart;
-    ctx.save();
-    ctx.globalCompositeOperation = "destination-over";
-    ctx.fillStyle = options.color || "#99ffff";
-    ctx.fillRect(0, 0, chart.width, chart.height);
-    ctx.restore();
-  },
-};
-
 export default function DoughnutInfo({ totalHoursByType }) {
   const initialDoughnut = function () {
     let falsyCount = 0;
@@ -69,7 +57,7 @@ export default function DoughnutInfo({ totalHoursByType }) {
             labels: {
               color: "#eeecff",
               font: {
-                family: "Open Sans",
+                family: "Segoe UI",
                 weight: 400,
                 size: 24,
               },

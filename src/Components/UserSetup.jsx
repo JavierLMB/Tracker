@@ -2,8 +2,9 @@ import { useState } from "react";
 import maleAvatar from "../images/maleAvatar.svg";
 import femaleAvatar from "../images/femaleAvatar.svg";
 import Button from "./Button";
+import presetObj from "./presetObj";
 
-export default function UserSetup({ onUser }) {
+export default function UserSetup({ onUser, onActivities }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -21,7 +22,7 @@ export default function UserSetup({ onUser }) {
       gender,
     };
 
-    const preset =
+    const userPreset =
       firstName === "preset" && lastName === "preset" && gender === "male"
         ? {
             firstName: "Jeremy",
@@ -30,7 +31,8 @@ export default function UserSetup({ onUser }) {
           }
         : false;
 
-    onUser(preset || newUser);
+    userPreset && onActivities(presetObj);
+    onUser(userPreset || newUser);
   };
 
   return (

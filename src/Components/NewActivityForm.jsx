@@ -2,8 +2,6 @@ import { useState } from "react";
 import initialData from "./initialData";
 import Button from "./Button";
 
-// const presetObj = [{ id: 1, name: "a", type: "Work", hours: 2 }];
-
 export default function NewActivityForm({
   activities,
   onActivities,
