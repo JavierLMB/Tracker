@@ -69,7 +69,7 @@ export default function DoughnutInfo({ totalHoursByType }) {
             labels: {
               color: "#eeecff",
               font: {
-                family: "Segoe UI",
+                family: "Open Sans",
                 weight: 400,
                 size: 24,
               },

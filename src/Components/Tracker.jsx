@@ -24,6 +24,14 @@ export default function Tracker() {
     {}
   );
 
+  const topActivityNameGlobal = Object.values(topActivityName).reduce(
+    (highest, activity) =>
+      activity.hours > highest.hours ? activity : highest,
+    { hours: 0, name: "None" }
+  );
+
+  console.log(topActivityNameGlobal);
+
   function handleSectionChange(e) {
     setSection(e.target.textContent);
   }
@@ -40,7 +48,10 @@ export default function Tracker() {
         <NewActivity activities={activities} onActivities={setActivities} />
       )}
       {section === "Breakdown" && (
-        <Breakdown totalHoursByType={totalHoursByType} />
+        <Breakdown
+          totalHoursByType={totalHoursByType}
+          topActivityNameGlobal={topActivityNameGlobal}
+        />
       )}
       {section === "Summary" && (
         <CardList
