@@ -5,8 +5,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Breakdown({ totalHoursByType }) {
   return (
-    <div className="breakdown">
-      <DoughnutInfo totalHoursByType={totalHoursByType} />
+    <div className="breakdownContainer">
+      <div className="breakdown">
+        <div>
+          <h3>Activity Breakdown</h3>
+          <div>Favourite Activity -</div>
+        </div>
+        <DoughnutInfo totalHoursByType={totalHoursByType} />
+      </div>
     </div>
   );
 }
