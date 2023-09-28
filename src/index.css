@@ -324,6 +324,7 @@ input[type="radio"] {
     var(--global-radius);
   max-height: 54.8rem;
   max-width: 97.8rem;
+  gap: 5rem;
 }
 
 .breakdown div {
