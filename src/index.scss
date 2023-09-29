@@ -2,17 +2,29 @@
   --primary-dark: rgb(12, 18, 34);
   --primary-medium: hsl(236, 43%, 20%);
   --primary-light: hsl(246, 80%, 60%);
-
   --work-primary: hsl(15, 100%, 70%);
   --play-primary: hsl(195, 74%, 62%);
   --study-primary: hsl(348, 100%, 68%);
   --exercise-primary: hsl(145, 58%, 55%);
   --social-primary: hsl(263, 63%, 51%);
   --selfCare-primary: hsl(43, 84%, 65%);
-
   --global-gap: 3rem;
   --global-radius: 2rem;
   --inner-radius: 5rem;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin base-button {
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 * {
@@ -32,12 +44,10 @@ html {
 }
 
 body {
+  @include flex-center;
   height: 100vh;
   color: hsl(246, 100%, 96%);
   background-color: var(--primary-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow-x: hidden;
   font-size: 2rem;
   font-weight: 600;
@@ -58,48 +68,31 @@ body {
 }
 
 .button {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
+  @include base-button;
   color: hsl(246, 30%, 45%);
   font-size: 2rem;
-}
-
-.button:hover {
-  color: hsl(246, 30%, 70%);
-  transition: all ease-out 0.3s;
-}
-
-.button.active {
-  color: hsl(246, 30%, 85%);
-  transition: all ease-out 0.1s;
+  &:hover {
+    color: hsl(246, 30%, 70%);
+    transition: all ease-out 0.3s;
+  }
+  &.active {
+    color: hsl(246, 30%, 85%);
+    transition: all ease-out 0.1s;
+  }
 }
 
 .buttonBright {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
+  @include base-button;
   color: hsl(246, 30%, 90%);
-  transition: all ease-out 0.3s;
-
   font-size: 2rem;
-}
-
-.buttonBright:hover {
-  color: hsl(246, 30%, 100%);
-  transition: all ease-out 0.3s;
+  &:hover {
+    color: hsl(246, 30%, 100%);
+    transition: all ease-out 0.3s;
+  }
 }
 
 .app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   height: 100vh;
   width: 100vw;
 }
@@ -124,11 +117,12 @@ body {
   display: flex;
   justify-content: center;
   gap: 1rem;
-}
-
-.genderChoice label input[type="radio"]:checked + img {
-  transform: translateY(-1rem);
-  transition: 0.5s ease-out;
+  label {
+    input[type="radio"]:checked + img {
+      transform: translateY(-1rem);
+      transition: 0.5s ease-out;
+    }
+  }
 }
 
 input,
@@ -141,12 +135,10 @@ select {
   border: transparent;
   border-radius: 0.5rem;
   transition: 0.3s;
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border: transparent;
+  &:focus {
+    outline: none;
+    border: transparent;
+  }
 }
 
 input[type="radio"] {
@@ -169,11 +161,10 @@ input[type="radio"] {
   z-index: -99;
   width: 30rem;
   height: 30rem;
-}
-
-.logoIconContainer:hover {
-  width: 35rem;
-  height: 35rem;
+  &:hover {
+    width: 35rem;
+    height: 35rem;
+  }
 }
 
 .profileIcon {
@@ -215,21 +206,18 @@ input[type="radio"] {
   background-color: var(--primary-light);
   height: 100%;
   padding: 3rem;
-}
-
-.userSection p {
-  font-weight: 100;
-  padding-bottom: 1.5rem;
-}
-
-.userSection h2 {
-  text-align: center;
-}
-
-.userSection h3 {
-  font-weight: 700;
-  font-size: 5rem;
-  line-height: 5rem;
+  p {
+    font-weight: 100;
+    padding-bottom: 1.5rem;
+  }
+  h2 {
+    text-align: center;
+  }
+  h3 {
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 5rem;
+  }
 }
 
 .datePreview {
@@ -270,12 +258,11 @@ input[type="radio"] {
   display: flex;
   flex-direction: column;
   gap: 5rem;
-}
-
-.newActivityInner h3 {
-  text-align: start;
-  font-size: 3rem;
-  font-weight: 600;
+  h3 {
+    text-align: start;
+    font-size: 3rem;
+    font-weight: 600;
+  }
 }
 
 .newActivityData {
@@ -305,33 +292,27 @@ input[type="radio"] {
   overflow: auto;
   max-height: 37.8rem;
   user-select: text;
-}
-
-.activityListButton {
-  padding-right: 2rem;
-}
-
-.activityList li {
-  padding-bottom: 0.3rem;
-}
-
-.activityList div {
-  display: flex;
-  justify-content: space-between;
-}
-
-.activityList span {
-  font-size: 1.5rem;
-  font-weight: 200;
-}
-
-.activityList .activityNumber {
-  font-size: 3rem;
-  font-weight: 600;
-}
-
-.activityNumber span {
-  font-size: 2rem;
+  .activityListButton {
+    padding-right: 2rem;
+    li {
+      padding-bottom: 0.3rem;
+      div {
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-size: 1.5rem;
+          font-weight: 200;
+        }
+        .activityNumber {
+          font-size: 3rem;
+          font-weight: 600;
+          span {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .breakdown {
@@ -344,22 +325,19 @@ input[type="radio"] {
   max-height: 54.8rem;
   max-width: 97.8rem;
   gap: 5rem;
-  z-index: 1;
-}
-
-.breakdown div {
-  display: flex;
-  flex-direction: column;
-  align-self: flex-start;
-}
-
-.breakdown h3 {
-  font-weight: 600;
-  font-size: 3rem;
-}
-.breakdown h4 {
-  font-weight: 500;
-  font-size: 1.5rem;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    h3 {
+      font-weight: 600;
+      font-size: 3rem;
+    }
+    h4 {
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .breakdownContainer {
@@ -369,7 +347,7 @@ input[type="radio"] {
   border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
     var(--inner-radius);
   max-width: 97.8rem;
-  z-index: -2;
+  z-index: 1;
   position: relative;
 }
 
@@ -379,30 +357,25 @@ input[type="radio"] {
   width: 100%;
   height: 100%;
   gap: var(--global-gap);
-}
-
-.card {
-  padding: 4rem;
-  background-color: var(--primary-medium);
-  height: 100%;
-  border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
-    var(--global-radius);
-  z-index: 1;
-}
-
-.card h3 {
-  font-weight: 500;
-  padding-bottom: 1rem;
-}
-
-.card p {
-  font-size: 7rem;
-}
-
-.card .topActivity {
-  font-size: 2rem;
-  font-weight: 400;
-  color: hsl(246, 30%, 80%);
+  .card {
+    padding: 4rem;
+    background-color: var(--primary-medium);
+    height: 100%;
+    border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
+      var(--global-radius);
+    h3 {
+      font-weight: 500;
+      padding-bottom: 1rem;
+    }
+    p {
+      font-size: 7rem;
+    }
+    .topActivity {
+      font-size: 2rem;
+      font-weight: 400;
+      color: hsl(246, 30%, 80%);
+    }
+  }
 }
 
 .cardContainer {
