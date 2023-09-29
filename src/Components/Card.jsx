@@ -1,6 +1,9 @@
 export default function Card({ data, totalHoursByType, topActivityName }) {
   return (
     <div className="cardContainer" style={{ backgroundColor: data.color }}>
+      <div className="tabIconContainer">
+        <img className="tabIcon" src={data.icon} />
+      </div>
       <li className="card">
         <h3>{data.type}</h3>
         <p>

@@ -1,4 +1,5 @@
 import Activity from "./Activity";
+import activityList from "../images/activityList.svg";
 
 export default function ActivityList({
   activities,
@@ -12,6 +13,9 @@ export default function ActivityList({
         backgroundColor: backgroundColor,
       }}
     >
+      <div className="tabIconContainer">
+        <img className="tabIcon" src={activityList} />
+      </div>
       <div className="newActivityInner">
         <h3>Activity List</h3>
 

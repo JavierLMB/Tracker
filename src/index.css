@@ -1,6 +1,6 @@
 :root {
   --primary-dark: rgb(12, 18, 34);
-  --primary-medium: hsl(236, 44%, 20%);
+  --primary-medium: hsl(236, 43%, 20%);
   --primary-light: hsl(246, 80%, 60%);
 
   --work-primary: hsl(15, 100%, 70%);
@@ -181,6 +181,22 @@ input[type="radio"] {
   height: 13rem;
 }
 
+.tabIconContainer {
+  position: absolute;
+  top: 0rem;
+  right: -17rem;
+  z-index: -1;
+  width: 30rem;
+  height: 30rem;
+}
+
+.tabIcon {
+  width: 8rem;
+  height: 8rem;
+  opacity: 10%;
+  transform: rotate(30deg);
+}
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -233,12 +249,15 @@ input[type="radio"] {
   border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
     var(--global-radius);
   gap: var(--global-gap);
+  z-index: 1;
 }
 
 .newActivityContainer {
   padding-top: 5rem;
   border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
     var(--inner-radius);
+  position: relative;
+  z-index: -2;
 }
 
 .newActivityInner {
@@ -325,6 +344,7 @@ input[type="radio"] {
   max-height: 54.8rem;
   max-width: 97.8rem;
   gap: 5rem;
+  z-index: 1;
 }
 
 .breakdown div {
@@ -349,6 +369,8 @@ input[type="radio"] {
   border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
     var(--inner-radius);
   max-width: 97.8rem;
+  z-index: -2;
+  position: relative;
 }
 
 .cardList {
@@ -365,6 +387,7 @@ input[type="radio"] {
   height: 100%;
   border-radius: var(--inner-radius) var(--inner-radius) var(--global-radius)
     var(--global-radius);
+  z-index: 1;
 }
 
 .card h3 {
@@ -387,4 +410,6 @@ input[type="radio"] {
   padding-top: 5rem;
   border-radius: var(--global-radius) var(--global-radius) var(--inner-radius)
     var(--inner-radius);
+  position: relative;
+  z-index: -2;
 }

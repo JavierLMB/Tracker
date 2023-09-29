@@ -1,6 +1,7 @@
 import { useState } from "react";
 import initialData from "./initialData";
 import Button from "./Button";
+import activityAdd from "../images/activityAdd.svg";
 
 export default function NewActivityForm({
   activities,
@@ -40,6 +41,9 @@ export default function NewActivityForm({
       }}
       onSubmit={handleSubmit}
     >
+      <div className="tabIconContainer">
+        <img className="tabIcon" src={activityAdd} />
+      </div>
       <div className="newActivityInner">
         <h3>Activity Form</h3>
 
