@@ -8,13 +8,13 @@ Welcome to Tracker, a user-friendly application designed to help you keep track 
 
 ---
 
-## **Game Screenshot**
+## **Overview**
 
 <img src="/src/images/TrackerGif.gif" alt="Tracker Gif">
 
 ## **How to Use**
 
-User Setup: On the homepage, start by enterting your basic details to set up your user profile.
+User Setup: On the homepage, start by enterting your personal details to set up your user profile.
 
 Tracker: You'll be presented with three options:
 
@@ -53,7 +53,7 @@ See [MIT License](https://opensource.org/licenses/mit-license.php) for details.
 
 ## **Acknowledgments**
 
-Special thanks to https://react-chartjs-2.js.org/ for providing the doughnut chart.
+Special thanks to https://react-chartjs-2.js.org/ and https://www.frontendmentor.io/ for providing the doughnut chart and design inspiration.
 
 ---
 
