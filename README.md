@@ -1,10 +1,10 @@
-# MatchTheFlag
+# Tracker
 
 Live link - https://trackerjc.netlify.app/
 
 ## **Tracker App**
 
-Welcome to the Tracking App, a user-friendly application designed to help you keep track of your activities and analyze your progress. Whether you're managing your work tasks, personal projects, or fitness routines, this app provides you with the tools to monitor your activities efficiently.
+Welcome to Tracker, a user-friendly application designed to help you keep track of your activities and analyze your progress. Whether you're managing your work tasks, personal projects, or fitness routines, this app provides you with the tools to monitor your activities efficiently.
 
 ---
 
@@ -18,13 +18,13 @@ User Setup: On the homepage, start by enterting your basic details to set up you
 
 Tracker: You'll be presented with three options:
 
-- **New Activity:** Add new activities with details like type, name, and duration.
-- **Breakdown:** Visualize your activity data in a doughnut chart format for a detailed breakdown.
-- **Summary:** Overview of your activities, their total hours, and top activity.
+- New Activity: Add new activities with details like type, name, and duration.
+- Breakdown: Visualize your activity data in a doughnut chart format for a detailed breakdown.
+- Summary: Overview of your activities, their total hours, and top activity.
 
 ## **Extra feature**
 
-Preset: Opt for the "Male" option and set your name and last name to "preset" in order to access a pre-filled profile. Experience the app's features immediately, allowing for effortless exploration and understanding.
+Preset: Opt for the "Male" option and set your first and last name to "preset" in order to access a pre-filled profile. Experience the app's features immediately, allowing for effortless exploration and understanding.
 
 ## **Technologies Used**
 
