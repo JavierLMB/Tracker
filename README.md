@@ -10,7 +10,7 @@ Welcome to Tracker, a user-friendly application designed to help you keep track 
 
 ## **Game Screenshot**
 
-[![Video Demo](https://img.youtube.com/vi/oOoECk3t6Ug/0.jpg)](https://www.youtube.com/watch?v=oOoECk3t6Ug)
+<img src="/src/images/TrackerGif.gif" alt="Tracker Gif">
 
 ## **How to Use**
 
