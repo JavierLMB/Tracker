@@ -31,8 +31,6 @@ export default function Tracker() {
     { hours: 0, name: "None" }
   );
 
-  console.log(topActivityNameGlobal);
-
   function handleSectionChange(e) {
     setSection(e.target.textContent);
   }
